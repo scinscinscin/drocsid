@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --cod-gray-50: #f7f7f7;
+  --cod-gray-100: #e3e3e3;
+  --cod-gray-200: #c8c8c8;
+  --cod-gray-300: #a4a4a4;
+  --cod-gray-400: #818181;
+  --cod-gray-500: #666666;
+  --cod-gray-600: #515151;
+  --cod-gray-700: #434343;
+  --cod-gray-800: #383838;
+  --cod-gray-900: #121212;
+
+  --racing-green-50: #f4f9f5;
+  --racing-green-100: #dbecdc;
+  --racing-green-200: #b7d8bb;
+  --racing-green-300: #8abe93;
+  --racing-green-400: #629f6d;
+  --racing-green-500: #488454;
+  --racing-green-600: #386944;
+  --racing-green-700: #305539;
+  --racing-green-800: #294630;
+  --racing-green-900: #0e1610;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.space_between {
+  display: flex;
+  justify-content: space-between;
+}
+
+body,
+#root {
+  background-color: var(--cod-gray-900);
+  height: 100vh;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--cod-gray-50);
+}
+
+input,
+button {
+  display: block;
+  background-color: var(--cod-gray-800);
+  color: var(--cod-gray-50);
+  border: none;
+  border-radius: 5px;
+  padding: 7px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.Modal {
+  position: absolute;
+  background-color: var(--cod-gray-900);
+  border: 2px solid var(--cod-gray-500);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  min-height: 750px;
+  min-width: 1000px;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(10px);
+}

@@ -1,0 +1,80 @@
+.login_container {
+  padding: 20px;
+
+  main {
+    margin-top: 20px;
+  }
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+
+  aside {
+    padding: 10px 20px;
+    width: 250px;
+
+    .room_card {
+      margin-bottom: 10px;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    .room_card:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  section {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.05);
+    position: relative;
+
+    header {
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h1,
+      h4 {
+        margin-right: 10px;
+        display: inline;
+      }
+
+      background: var(--cod-gray-900);
+      position: sticky;
+      top: 0;
+      z-index: 0;
+    }
+
+    main {
+      padding: 0px 20px 20px 20px;
+      height: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      .msg {
+        margin-bottom: 10px;
+        b {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    footer {
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      left: 0;
+
+      width: 100%;
+      padding: 0px 20px 10px 20px;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./database.sqlite"
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  uuid     String @unique @default(uuid())
+  username String @unique
+  hash     String
+  salt     String
+}
+
+model Room {
+  id   Int    @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  name String
+}
