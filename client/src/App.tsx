@@ -1,4 +1,6 @@
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.scss";
+
 import { Index } from "./pages";
 import { About } from "./pages/about";
 import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
@@ -20,12 +22,14 @@ export default function () {
     <SessionContext.Provider value={[user, setUser]}>
       <ToastContainer />
 
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </BrowserRouter>
+      <div className="app">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </SessionContext.Provider>
   );
 }
