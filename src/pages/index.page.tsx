@@ -4,32 +4,22 @@ import { client } from "../utils/apiClient";
 import { useForm } from "react-hook-form";
 import { Channel } from "@prisma/client";
 import { db } from "../utils/prisma";
+import styles from "./index.module.scss";
+import { simpliform } from "../utils/lib/simpliform";
+import { formStyles } from "../components/formStyles";
 
 const Page = PrivateLayout.createPage<{ channels: Channel[] }>({
   page({ channels: _channels }) {
     const [channels, setChannels] = useState<Channel[]>(_channels);
     const Form = useForm<{ name: string }>();
+    const r = simpliform(Form);
 
     return {
       children: (
-        <div>
-          <h2>Create a Channel</h2>
-          <form
-            onSubmit={Form.handleSubmit(async ({ name }) => {
-              const { channel } = await client["/channel"]["/create"].post({ body: { name } });
-              setChannels([...channels, channel]);
-            })}
-          >
-            <label htmlFor="name">Channel Name</label>
-            <input {...Form.register("name")} required />
-            <button type="submit">Submit</button>
-          </form>
-
-          {channels.length == 0 ? (
-            <h2>There are no channels available</h2>
-          ) : (
+        <div className={styles.Page}>
+          {channels.length != 0 && (
             <div>
-              <h2>List of all channels available</h2>
+              <h3>List of all channels available</h3>
               <ul>
                 {channels.map((c, i) => (
                   <li key={i}>
@@ -39,6 +29,19 @@ const Page = PrivateLayout.createPage<{ channels: Channel[] }>({
               </ul>
             </div>
           )}
+
+          <form
+            className={formStyles + " " + styles.Form}
+            onSubmit={Form.handleSubmit(async ({ name }) => {
+              const { channel } = await client["/channel"]["/create"].post({ body: { name } });
+              setChannels([...channels, channel]);
+              Form.reset();
+            })}
+          >
+            <h3>Create your own channel</h3>
+            <input {...r({ field: "name", placeholder: "Channel Name" })} />
+            <button type="submit">Submit</button>
+          </form>
         </div>
       ),
     };

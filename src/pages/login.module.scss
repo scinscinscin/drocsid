@@ -1,0 +1,42 @@
+.CentralizedMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  min-width: 450px;
+
+  header {
+    display: flex;
+
+    .common {
+      padding: 10px 15px;
+      flex: 1;
+      border-bottom: 2px solid black;
+    }
+
+    .selected {
+      background-color: black;
+      color: white;
+    }
+
+    .unselected {
+      box-shadow: -7px -27px 48px -50px rgba(0, 0, 0, 0.48) inset;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+  .inner {
+    padding: 15px 15px;
+  }
+
+  border: 2px solid black;
+
+  .submit {
+    margin-top: 20px;
+  }
+}

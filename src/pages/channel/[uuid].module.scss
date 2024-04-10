@@ -1,0 +1,27 @@
+.heading {
+  margin-bottom: 5px;
+}
+
+.Form {
+  display: flex;
+  margin-bottom: 20px;
+
+  div {
+    flex: 1;
+  }
+
+  input {
+    height: 100%;
+  }
+
+  button {
+    width: fit-content;
+    padding: 5px 15px;
+  }
+}
+
+.messages {
+  b {
+    font-weight: bold;
+  }
+}

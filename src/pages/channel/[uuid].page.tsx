@@ -4,10 +4,14 @@ import { db } from "../../utils/prisma";
 import { useEffect, useRef, useState } from "react";
 import { client } from "../../utils/apiClient";
 import { useForm } from "react-hook-form";
+import { formStyles } from "../../components/formStyles";
+import styles from "./[uuid].module.scss";
+import { simpliform } from "../../utils/lib/simpliform";
 
 const Page = PrivateLayout.createPage<{ channel: Channel }>({
   page({ channel }) {
     const Form = useForm<{ contents: string }>();
+    const r = simpliform(Form);
     const sendMessage = useRef<(contents: string) => void>();
     const [messages, setMessages] = useState<{ contents: string; username: string }[]>([]);
 
@@ -27,23 +31,30 @@ const Page = PrivateLayout.createPage<{ channel: Channel }>({
     return {
       children: (
         <div>
-          <h2>{channel.name}</h2>
+          <h3 className={styles.heading}>{channel.name}</h3>
+
           <form
+            className={formStyles + " " + styles.Form}
             onSubmit={Form.handleSubmit(({ contents }) => {
-              sendMessage.current!(contents);
+              sendMessage.current!(contents.trim());
               Form.reset();
             })}
           >
-            <input {...Form.register("contents")} required />
-            <button type="submit">Submit</button>
+            <div>
+              <input {...r({ field: "contents", placeholder: `Send a message to ${channel.name}` })} />
+            </div>
+
+            <button type="submit">Send Message</button>
           </form>
 
-          <h3>Messages</h3>
-          {messages.map((m) => (
-            <p>
-              <b>{m.username}</b>: {m.contents}
-            </p>
-          ))}
+          <div className={styles.messages}>
+            <h3>Messages</h3>
+            {messages.map((m) => (
+              <p>
+                <b>{m.username}</b>: {m.contents}
+              </p>
+            ))}
+          </div>
         </div>
       ),
     };

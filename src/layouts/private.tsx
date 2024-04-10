@@ -2,10 +2,11 @@ import { User } from "@prisma/client";
 import { GenerateLayout, GenerateLayoutOptionsImpl } from "@scinorandex/layout";
 import { NextSeo, NextSeoProps } from "next-seo";
 import { Cleanse, Cleansed } from "../utils/Cleanse";
+import styles from "./layout.module.scss";
 
 interface PrivateLayoutOptions extends GenerateLayoutOptionsImpl {
   // the page can return NextSeoProps to define the SEO meta tags of the page
-  ClientSideLayoutProps: { seo?: NextSeoProps };
+  ClientSideLayoutProps: { seo?: NextSeoProps; mainClassname?: string };
   // the layout needs the username of the currently logged in user
   ServerSideLayoutProps: { user: Cleansed["user"] };
   ServerSidePropsContext: { user: User };
@@ -26,13 +27,13 @@ export const PrivateLayout = GenerateLayout<PrivateLayoutOptions>({
           }}
         />
 
-        <div>
-          <header>
-            <h2>@scinorandex/ssr template</h2>
+        <div className={styles.Page}>
+          <header className={styles.header}>
+            <h2>Drocsid</h2>
             <h3>Logged in as: {internalProps.user.username}</h3>
           </header>
 
-          <main>{layoutProps.children}</main>
+          <main className={styles.main + " " + layoutProps.mainClassname}>{layoutProps.children}</main>
         </div>
       </>
     );

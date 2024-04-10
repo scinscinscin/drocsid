@@ -1,0 +1,31 @@
+.form {
+  input,
+  label {
+    display: block;
+    width: 100%;
+  }
+
+  label {
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  input {
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 2px solid black;
+  }
+
+  button {
+    background-color: black;
+    border: 2px solid black;
+    color: white;
+    padding: 10px 15px;
+    font-family: Inter Tight, sans-serif;
+    text-align: center;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+  }
+}
